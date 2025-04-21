@@ -31,6 +31,9 @@ public class QuizActivity extends AppCompatActivity {
 
 
         TextView tvWelcome = findViewById(R.id.Welcome);
+        TextView score_result = findViewById(R.id.Score_result);
+        TextView question_result = findViewById(R.id.Question_result);
+
         String username = getIntent().getStringExtra("username");
         if (username != null && !username.isEmpty()) {
             tvWelcome.setText("Welcome " + username);
@@ -39,5 +42,10 @@ public class QuizActivity extends AppCompatActivity {
             Intent intent = new Intent(QuizActivity.this, PlayActivity.class);
             startActivity(intent);
         });
+        if (getIntent().hasExtra("correctAnswers")) {
+            int correctAnswers = getIntent().getIntExtra("correctAnswers", 0);
+            score_result.setText(String.valueOf(correctAnswers));
+            question_result.setText(String.format("%d/5", correctAnswers));
+        }
     }
 }

@@ -34,10 +34,11 @@
             android:layout_width="match_parent"
             android:layout_height="124dp"
             android:background="@color/white_2"
-            android:gravity="center"
+            android:gravity="center|top"
             android:text="Câu hỏi thứ 1"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -104,7 +105,8 @@
                 android:layout_marginEnd="65dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/Red_rose"
-                android:text="Prev" />
+                android:text="Prev"
+                android:textColor="@color/white_2" />
 
             <Button
                 android:id="@+id/btn_next"
@@ -113,7 +115,8 @@
                 android:layout_marginStart="65dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/Red_rose"
-                android:text="Next" />
+                android:text="Next"
+                android:textColor="@color/white_2" />
         </LinearLayout>
 
     </LinearLayout>

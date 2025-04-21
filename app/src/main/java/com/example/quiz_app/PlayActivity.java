@@ -1,6 +1,7 @@
 package com.example.quiz_app;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ public class PlayActivity extends AppCompatActivity {
 
     int currentIndex = 0;
 
-    String[] result = new String[]{"A", "B", "C", "D", "A"};
+    String[] result = new String[]{"B", "C", "D", "A", "B"};
     String[] answers = new String[result.length];
 
     List<String> questionList = new ArrayList<>();
@@ -56,6 +57,9 @@ public class PlayActivity extends AppCompatActivity {
             currentIndex++;
             if (currentIndex < result.length) {
                 updateQuestion(currentIndex);
+                if(currentIndex == result.length - 1){
+                    btn_next.setText("Kết thúc");
+                }
             } else {
                 checkAnswers();
             }
@@ -73,10 +77,10 @@ public class PlayActivity extends AppCompatActivity {
 
     private void loadQuestions() {
         questionList.add(0, "1+1 = ? \n A.1 \n B.2 \n C.3 \n D.4");
-        questionList.add(1, "2+2 = ? \n A.1 \n B.2 \n C.3 \n D.4");
-        questionList.add(2, "3+3 = ? \n A.1 \n B.2 \n C.3 \n D.4");
-        questionList.add(3, "4+4 = ? \n A.1 \n B.2 \n C.3 \n D.4");
-        questionList.add(4, "5+5 = ? \n A.1 \n B.2 \n C.3 \n D.4");
+        questionList.add(1, "2+4 = ? \n A.2 \n B.4 \n C.6 \n D.8");
+        questionList.add(2, "3+9 = ? \n A.3 \n B.6 \n C.9 \n D.12");
+        questionList.add(3, "3+1 = ? \n A.4 \n B.8 \n C.16 \n D.32");
+        questionList.add(4, "5x2 = ? \n A.5 \n B.10 \n C.15 \n D.20");
     }
 
     private void updateQuestion(int index) {
@@ -100,7 +104,9 @@ public class PlayActivity extends AppCompatActivity {
                 correctAnswers++;
             }
         }
-        Toast.makeText(this, "Số câu đúng: " + correctAnswers, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(PlayActivity.this, QuizActivity.class);
+        intent.putExtra("correctAnswers", correctAnswers);
+        startActivity(intent);
     }
 }
 
